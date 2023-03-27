@@ -20,8 +20,8 @@ public:
     ~File_tsv() { file.close(); }
 };
 
-std::vector<std::string> is_adult(File_tsv& file_titles, std::vector<std::string>& movies_id);
+std::vector<std::string> isAdult(File_tsv& file_titles, const std::vector<std::string>& movies_id);
 
-void search_movies(File_tsv& file_movies, std::vector<std::string>& movies_id);
+void search_movies(File_tsv& file_movies, const std::vector<std::string>& movies_id);
 
-std::vector<std::string> search_character(File_tsv& file_characters, std::string character);
+std::vector<std::string> search_character(File_tsv& file_characters, const std::string character);
