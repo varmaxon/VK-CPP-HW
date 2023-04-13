@@ -65,12 +65,12 @@ void List<T>::push_back(T object) {
     tail->SetNextOperation(tail->prev);
 }
 
-void parsing(List<std::shared_ptr<IOperation>> list, std::vector<std::string>* result, char *argument) {
+void parsing(List<std::shared_ptr<IOperation>> list, std::shared_ptr<std::vector<std::string>> result, std::string argument) {
     std::string str = "", operation;
     std::string commands(argument);
     commands += " ";
     bool flag = true, ending_signal = false;
-    int index = 0;
+    unsigned int index = 0;
 
     while (index < commands.size()) {
         if (commands.at(index) != '|' && index != commands.size() - 1) {
@@ -89,9 +89,8 @@ void parsing(List<std::shared_ptr<IOperation>> list, std::vector<std::string>* r
             }
 
             std::shared_ptr<IOperation> ptr;
-            std::string path = "/home/max/VK/CPP/DZ2/data/";
             if (operation == "cat") {
-                ptr = std::make_shared<CatOperation>(path + str, result, ending_signal);
+                ptr = std::make_shared<CatOperation>(str, result, ending_signal);
             }
             else if (operation == "echo") {
                 ptr = std::make_shared<EchoOperation>(str, result, ending_signal);
